@@ -4,7 +4,9 @@ class LocationsList extends Component {
   render() {
     return (
       <section className="App-Sidebar">
-        <h2>Filter your locations to show it on the map</h2>
+        <h2 className="App-Title-Filter">
+          Filter your locations to show it on the map
+        </h2>
         <form>
           <label>
             Filter:

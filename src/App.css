@@ -39,6 +39,16 @@
   border: none;
 }
 
+.App-Menu-icon:hover {
+  background-color: transparent;
+  color: #c5d1e5;
+  border: none;
+}
+
+.App-Title-Filter {
+  font-size: 1.2em;
+}
+
 @media screen and (max-width: 700px) {
   .App-Wrapper {
     flex-direction: column;

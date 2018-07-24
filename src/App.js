@@ -48,7 +48,9 @@ class App extends Component {
         title: "Musée de la vie bourguignonne Perrin de Puycousin",
         location: { lat: 47.3174169, lng: 5.0376904 }
       }
-    ]
+    ],
+
+    marker: []
   };
   render() {
     return (
@@ -57,7 +59,7 @@ class App extends Component {
         <div className="App-Wrapper">
           <LocationsList />
           <div role="application" ref="map">
-            <MapContent />
+            <MapContent locations={this.state.locations} />
           </div>
         </div>
       </div>

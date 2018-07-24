@@ -14,14 +14,13 @@
 .App-header {
   background-color: #222;
   height: 70px;
-
   color: white;
   display: flex;
-  justify-content: space-around;
 }
 
 .App-title {
   font-size: 1.3em;
+  margin: 20px auto;
 }
 
 .App-intro {

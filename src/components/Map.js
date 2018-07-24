@@ -1,28 +1,21 @@
 import React, { Component } from "react";
-import GoogleMapReact from "google-map-react";
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 
-class Map extends Component {
-  static defaultProps = {
-    center: {
-      lat: 47.322047,
-      lng: 5.04148
-    },
-    zoom: 12
-  };
-
+class MapContent extends Component {
   render() {
     return (
-      <div className="App-map" style={{ height: "100vh", width: "100%" }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{
-            key: "AIzaSyAnAjwwoEN3ySjRoMvE5664Jw-SpMYBRiY"
-          }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-        />
-      </div>
+      <Map
+        google={this.props.google}
+        zoom={13}
+        initialCenter={{
+          lat: 47.322047,
+          lng: 5.04148
+        }}
+      />
     );
   }
 }
 
-export default Map;
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyAnAjwwoEN3ySjRoMvE5664Jw-SpMYBRiY"
+})(MapContent);

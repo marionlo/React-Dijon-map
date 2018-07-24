@@ -13,9 +13,11 @@
 
 .App-header {
   background-color: #222;
-  height: 50px;
-  padding: 20px;
+  height: 70px;
+
   color: white;
+  display: flex;
+  justify-content: space-around;
 }
 
 .App-title {
@@ -29,6 +31,12 @@
 .App-Sidebar {
   width: 3oopx;
   background-color: #c5d1e5;
+}
+
+.App-Menu-icon {
+  background-color: transparent;
+  color: white;
+  border: none;
 }
 
 @media screen and (max-width: 700px) {

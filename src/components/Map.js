@@ -51,7 +51,9 @@ class MapContent extends Component {
             visible={this.state.showingInfoWindow}
           >
             <div>
-              <h1>{this.state.selectedPlace.name}</h1>
+              <h3 className="App-Title-InfoWindow">
+                {this.state.selectedPlace.name}
+              </h3>
             </div>
           </InfoWindow>
         </Map>

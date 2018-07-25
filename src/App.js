@@ -52,6 +52,7 @@ class App extends Component {
 
     marker: []
   };
+
   render() {
     return (
       <div className="App">
@@ -59,7 +60,10 @@ class App extends Component {
         <div className="App-Wrapper">
           <LocationsList />
           <div role="application" ref="map">
-            <MapContent locations={this.state.locations} />
+            <MapContent
+              locations={this.state.locations}
+              marker={this.state.marker}
+            />
           </div>
         </div>
       </div>

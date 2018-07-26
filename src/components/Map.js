@@ -39,6 +39,7 @@ class MapContent extends Component {
             <Marker
               key={marker.id}
               name={marker.title}
+              animation={google.maps.Animation.DROP}
               position={{ lat: marker.location.lat, lng: marker.location.lng }}
               onClick={this.onMarkerClick}
             />
@@ -54,6 +55,7 @@ class MapContent extends Component {
               <h3 className="App-Title-InfoWindow">
                 {this.state.selectedPlace.name}
               </h3>
+              <p>Details:</p>
             </div>
           </InfoWindow>
         </Map>

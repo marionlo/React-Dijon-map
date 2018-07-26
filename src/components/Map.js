@@ -2,28 +2,6 @@ import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 
 class MapContent extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
-  };
-
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
-
-  onMapClicked = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  };
-
   render() {
     return (
       <div>
@@ -34,6 +12,7 @@ class MapContent extends Component {
             lat: 47.322047,
             lng: 5.04148
           }}
+          onClick={this.props.onMapClicked}
         >
           {this.props.locations.map((marker, ind) => (
             <Marker
@@ -41,19 +20,19 @@ class MapContent extends Component {
               name={marker.title}
               animation={google.maps.Animation.DROP}
               position={{ lat: marker.location.lat, lng: marker.location.lng }}
-              onClick={this.onMarkerClick}
+              onClick={this.props.onMarkerClick}
             />
           ))}
 
           <InfoWindow
-            marker={this.state.activeMarker}
+            marker={this.props.activeMarker}
             onOpen={this.windowHasOpened}
             onClose={this.windowHasClosed}
-            visible={this.state.showingInfoWindow}
+            visible={this.props.showingInfoWindow}
           >
             <div>
               <h3 className="App-Title-InfoWindow">
-                {this.state.selectedPlace.name}
+                {this.props.selectedPlace.name}
               </h3>
               <p>Details:</p>
             </div>

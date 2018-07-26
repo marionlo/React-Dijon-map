@@ -6,29 +6,13 @@ import LocationsList from "./components/LocationsList.js";
 import "./App.css";
 
 class App extends Component {
-  componentDidMount() {
+  /*componentDidMount() {
     fetch(
       "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=5fbf4edfc2e62e88f19e1e2021ac937a&tags=nyc&per_page=10&page=1&format=json&nojsoncallback=1"
     ).then(function(response) {
       return response.json();
     });
-  }
-
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
-
-  onMapClicked = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  };
+  } */
 
   state = {
     locations: [
@@ -84,7 +68,26 @@ class App extends Component {
       }
     ],
 
-    marker: []
+    marker: [],
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
+  };
+
+  onMarkerClick = (props, marker, e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+
+  onMapClicked = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
   };
 
   render() {
@@ -92,11 +95,15 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="App-Wrapper">
-          <LocationsList locations={this.state.locations} />
+          <LocationsList />
           <div role="application" ref="map">
             <MapContent
               locations={this.state.locations}
-              marker={this.state.marker}
+              showingInfoWindow={this.state.showingInfoWindow}
+              activeMarker={this.state.activeMarker}
+              selectedPlace={this.state.selectedPlace}
+              onMarkerClick={this.onMarkerClick}
+              onMapClicked={this.onMapClicked}
             />
           </div>
         </div>

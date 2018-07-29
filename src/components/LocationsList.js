@@ -1,7 +1,24 @@
 import React, { Component } from "react";
 
 class LocationsList extends Component {
+  constructor() {
+    super();
+    this.state = {
+      search: ""
+    };
+  }
+  updateSearch(event) {
+    this.setState({ search: event.target.value.substr(0, 20) });
+  }
+
   render() {
+    let filteredLocations = this.props.locations.filter(location => {
+      return (
+        location.title
+          .toLowerCase()
+          .indexOf(this.state.search.toLowerCase()) !== -1
+      );
+    });
     return (
       <section className="App-Sidebar">
         <h2 className="App-Title-Filter">
@@ -13,15 +30,14 @@ class LocationsList extends Component {
             <input
               type="text"
               name="locations"
-              //value="Choose your location"
-              //onChange=function()
+              value={this.state.search}
+              onChange={this.updateSearch.bind(this)}
             />
           </label>
-          <input type="submit" value="Submit" />
         </form>
-        {this.props.locations.map((location, index) => (
+        {filteredLocations.map(location => (
           <ul className="App-List-Locations">
-            <li>{location.title}</li>
+            <li key={location.id}>{location.title}</li>
           </ul>
         ))}
       </section>

@@ -20,7 +20,9 @@ class LocationsList extends Component {
           <input type="submit" value="Submit" />
         </form>
         {this.props.locations.map((location, index) => (
-          <li>{this.props.locations.title}</li>
+          <ul className="App-List-Locations">
+            <li>{location.title}</li>
+          </ul>
         ))}
       </section>
     );

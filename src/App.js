@@ -71,7 +71,7 @@ class App extends Component {
     marker: [],
     showingInfoWindow: false,
     activeMarker: {},
-    selectedPlace: {}
+    selectedPlace: []
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -95,7 +95,12 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="App-Wrapper">
-          <LocationsList />
+          <LocationsList
+            selectedPlace={this.state.selectedPlace}
+            locations={this.state.locations}
+            activeMarker={this.state.activeMarker}
+            marker={this.state.marker}
+          />
           <div role="application" ref="map">
             <MapContent
               locations={this.state.locations}

@@ -3,6 +3,18 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 
 class MapContent extends Component {
   render() {
+    let marker = [];
+    const markers = this.props.locations.map((marker, ind) => (
+      <Marker
+        key={marker.id}
+        name={marker.title}
+        animation={google.maps.Animation.DROP}
+        position={{ lat: marker.location.lat, lng: marker.location.lng }}
+        onClick={this.props.onMarkerClick}
+      />
+    ));
+    markers.push(marker);
+
     return (
       <div>
         <Map
@@ -14,16 +26,7 @@ class MapContent extends Component {
           }}
           onClick={this.props.onMapClicked}
         >
-          {this.props.locations.map((marker, ind) => (
-            <Marker
-              key={marker.id}
-              name={marker.title}
-              animation={google.maps.Animation.DROP}
-              position={{ lat: marker.location.lat, lng: marker.location.lng }}
-              onClick={this.props.onMarkerClick}
-            />
-          ))}
-
+          {markers}
           <InfoWindow
             marker={this.props.activeMarker}
             onOpen={this.windowHasOpened}

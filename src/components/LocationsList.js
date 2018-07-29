@@ -13,12 +13,15 @@ class LocationsList extends Component {
             <input
               type="text"
               name="locations"
-              value="Choose your location"
+              //value="Choose your location"
               //onChange=function()
             />
           </label>
           <input type="submit" value="Submit" />
         </form>
+        {this.props.locations.map((location, index) => (
+          <li>{this.props.locations.title}</li>
+        ))}
       </section>
     );
   }

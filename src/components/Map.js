@@ -19,7 +19,7 @@ class MapContent extends Component {
       <div>
         <Map
           google={this.props.google}
-          zoom={13}
+          zoom={14}
           initialCenter={{
             lat: 47.322047,
             lng: 5.04148

@@ -4,9 +4,9 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 class MapContent extends Component {
   render() {
     let marker = [];
-    const markers = this.props.locations.map((marker, ind) => (
+    const markers = this.props.locations.map(marker => (
       <Marker
-        key={marker.id}
+        key={marker.key}
         name={marker.title}
         animation={google.maps.Animation.DROP}
         position={{ lat: marker.location.lat, lng: marker.location.lng }}
@@ -28,6 +28,7 @@ class MapContent extends Component {
         >
           {markers}
           <InfoWindow
+            key={marker.key}
             marker={this.props.activeMarker}
             onOpen={this.windowHasOpened}
             onClose={this.windowHasClosed}

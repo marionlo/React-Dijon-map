@@ -35,11 +35,11 @@ class LocationsList extends Component {
             />
           </label>
         </form>
-        {filteredLocations.map(location => (
-          <ul className="App-List-Locations">
-            <li key={location.id}>{location.title}</li>
-          </ul>
-        ))}
+        <ul className="App-List-Locations">
+          {filteredLocations.map(location => (
+            <li key={location.key}>{location.title}</li>
+          ))}
+        </ul>
       </section>
     );
   }

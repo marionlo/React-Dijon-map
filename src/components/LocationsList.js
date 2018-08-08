@@ -9,6 +9,16 @@ class LocationsList extends Component {
   }
   updateSearch(event) {
     this.setState({ search: event.target.value.substr(0, 20) });
+
+    let filteredLocations = this.props.locations.filter(location => {
+      return (
+        location.title
+          .toLowerCase()
+          .indexOf(event.target.value.substr(0, 20).toLowerCase()) !== -1
+      );
+    });
+    console.log(event.target.value.substr(0, 20));
+    this.props.onFilterLocations(filteredLocations);
   }
 
   render() {

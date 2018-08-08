@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import Header from "./components/Header.js";
 import MapContent from "./components/Map.js";
 import LocationsList from "./components/LocationsList.js";
@@ -13,6 +12,10 @@ class App extends Component {
       return response.json();
     });
   } */
+  constructor() {
+    super();
+    this.onFilterLocations = this.onFilterLocations.bind(this);
+  }
 
   state = {
     locations: [
@@ -71,8 +74,15 @@ class App extends Component {
     marker: [],
     showingInfoWindow: false,
     activeMarker: {},
-    selectedPlace: []
+    selectedPlace: [],
+    filteredLocations: []
   };
+  onFilterLocations(newLocations) {
+    console.log("test filter");
+    this.setState({
+      filteredLocations: newLocations
+    });
+  }
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -100,6 +110,7 @@ class App extends Component {
             locations={this.state.locations}
             activeMarker={this.state.activeMarker}
             marker={this.state.marker}
+            onFilterLocations={this.onFilterLocations}
           />
           <div role="application" ref="map">
             <MapContent
@@ -109,6 +120,7 @@ class App extends Component {
               selectedPlace={this.state.selectedPlace}
               onMarkerClick={this.onMarkerClick}
               onMapClicked={this.onMapClicked}
+              filteredLocations={this.state.filteredLocations}
             />
           </div>
         </div>

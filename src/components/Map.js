@@ -2,18 +2,35 @@ import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 
 class MapContent extends Component {
+  state = {
+    marker: [],
+    markers: [],
+    newmarkers: []
+  };
+
   render() {
-    let marker = [];
-    const markers = this.props.locations.map(marker => (
+    let marker = {};
+    let newmarkers = [];
+    const markers = this.props.filteredLocations.map(marker => (
       <Marker
         key={marker.key}
         name={marker.title}
-        animation={google.maps.Animation.DROP}
         position={{ lat: marker.location.lat, lng: marker.location.lng }}
         onClick={this.props.onMarkerClick}
       />
     ));
-    markers.push(marker);
+
+    newmarkers.push(markers);
+    console.log(markers);
+
+    /*console.log(markers[1].key);
+    console.log(this.props.locations[2].key);
+
+    if (markers.key === this.props.filteredLocations.key) {
+      console.log(true);
+    } else {
+      console.log(false);
+    }*/
 
     return (
       <div>
@@ -27,6 +44,7 @@ class MapContent extends Component {
           onClick={this.props.onMapClicked}
         >
           {markers}
+
           <InfoWindow
             key={marker.key}
             marker={this.props.activeMarker}

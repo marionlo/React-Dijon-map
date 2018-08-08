@@ -18,6 +18,7 @@ class LocationsList extends Component {
       );
     });
     console.log(event.target.value.substr(0, 20));
+    console.log(filteredLocations);
     this.props.onFilterLocations(filteredLocations);
   }
 

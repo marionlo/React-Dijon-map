@@ -25,9 +25,9 @@ class App extends Component {
         key: "halles"
       },
       {
-        title: "Église Saint-Étienne",
-        location: { lat: 47.3211217, lng: 5.0449197 },
-        key: "etienne"
+        title: "Église Saint-Bégnigne",
+        location: { lat: 47.3214917, lng: 5.0345168 },
+        key: "begnigne"
       },
       {
         title: "Hôtel de Vogüé",

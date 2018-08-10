@@ -7,6 +7,7 @@ class LocationsList extends Component {
       search: ""
     };
   }
+
   updateSearch(event) {
     this.setState({ search: event.target.value.substr(0, 20) });
 
@@ -48,7 +49,9 @@ class LocationsList extends Component {
         </form>
         <ul className="App-List-Locations">
           {filteredLocations.map(location => (
-            <li key={location.key}>{location.title}</li>
+            <li key={location.key} onClick={this.props.onMarkerClick}>
+              {location.title}
+            </li>
           ))}
         </ul>
       </section>

@@ -23,15 +23,6 @@ class MapContent extends Component {
     newmarkers.push(markers);
     console.log(markers);
 
-    /*console.log(markers[1].key);
-    console.log(this.props.locations[2].key);
-
-    if (markers.key === this.props.filteredLocations.key) {
-      console.log(true);
-    } else {
-      console.log(false);
-    }*/
-
     return (
       <div>
         <Map

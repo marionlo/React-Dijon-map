@@ -110,6 +110,7 @@ class App extends Component {
             locations={this.state.locations}
             activeMarker={this.state.activeMarker}
             marker={this.state.marker}
+            onMarkerClick={this.onMarkerClick}
             onFilterLocations={this.onFilterLocations}
           />
           <div role="application" ref="map">

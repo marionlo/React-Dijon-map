@@ -56,6 +56,11 @@
   font-size: 14px;
 }
 
+.App-Picture {
+  width: 50%;
+  height: 50%;
+}
+
 @media screen and (max-width: 700px) {
   .App-Wrapper {
     flex-direction: column;

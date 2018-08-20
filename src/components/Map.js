@@ -47,7 +47,8 @@ class MapContent extends Component {
               <h3 className="App-Title-InfoWindow">
                 {this.props.selectedPlace.name}
               </h3>
-              <p>Details:</p>
+              <h4>Pictures:</h4>
+              <p className="App-Picture"> {this.props.pictures}</p>
             </div>
           </InfoWindow>
         </Map>

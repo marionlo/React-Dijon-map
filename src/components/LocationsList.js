@@ -49,9 +49,7 @@ class LocationsList extends Component {
         </form>
         <ul className="App-List-Locations">
           {filteredLocations.map(location => (
-            <li key={location.key} onClick={this.props.onMarkerClick}>
-              {location.title}
-            </li>
+            <li key={location.key}>{location.title}</li>
           ))}
         </ul>
       </section>

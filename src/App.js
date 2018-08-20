@@ -5,13 +5,6 @@ import LocationsList from "./components/LocationsList.js";
 import "./App.css";
 
 class App extends Component {
-  /*componentDidMount() {
-    fetch(
-      "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=5fbf4edfc2e62e88f19e1e2021ac937a&tags=nyc&per_page=10&page=1&format=json&nojsoncallback=1"
-    ).then(function(response) {
-      return response.json();
-    });
-  } */
   constructor() {
     super();
     this.onFilterLocations = this.onFilterLocations.bind(this);
@@ -75,6 +68,9 @@ class App extends Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: [],
+
+    pictures: [],
+
     filteredLocations: [
       {
         title: "Halles du marché",
@@ -129,6 +125,38 @@ class App extends Component {
     ]
   };
 
+
+  componentDidMount() {
+    fetch(
+      "https://api.flickr.com/services/rest/?method=" +
+        "flickr.photos.search&api_key=5fbf4edfc2e62e88f19e1e2021ac937a" +
+        "&content_type=1&per_page=1&tags=" +
+        this.state.locations.title +
+        "&sort=relevance&format=json&nojsoncallback=1"
+    )
+      .then(function(response) {
+        return response.json();
+      })
+      .then(
+        function(j) {
+          let picArray = j.photos.photo.map(pic => {
+            var srcPath =
+              "https://farm" +
+              pic.farm +
+              ".staticflickr.com/" +
+              pic.server +
+              "/" +
+              pic.id +
+              "_" +
+              pic.secret +
+              ".jpg";
+            return <img alt={this.state.locations.title} src={srcPath} />;
+          });
+          this.setState({ pictures: picArray });
+        }.bind(this)
+      );
+  }
+
   onFilterLocations(newLocations) {
     console.log("test filter");
     this.setState({
@@ -166,6 +194,7 @@ class App extends Component {
             onFilterLocations={this.onFilterLocations}
             filteredLocations={this.state.filteredLocations}
           />
+
           <div role="application" ref="map">
             <MapContent
               locations={this.state.locations}
@@ -175,6 +204,7 @@ class App extends Component {
               onMarkerClick={this.onMarkerClick}
               onMapClicked={this.onMapClicked}
               filteredLocations={this.state.filteredLocations}
+              pictures={this.state.pictures}
             />
           </div>
         </div>

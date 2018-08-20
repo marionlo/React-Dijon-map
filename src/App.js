@@ -127,11 +127,12 @@ class App extends Component {
 
 
   componentDidMount() {
+    var pictureSearched = this.state.activeMarker.name;
     fetch(
       "https://api.flickr.com/services/rest/?method=" +
         "flickr.photos.search&api_key=5fbf4edfc2e62e88f19e1e2021ac937a" +
-        "&content_type=1&per_page=1&tags=" +
-        this.state.locations.title +
+        "&content_type=1&per_page=1&text=" +
+        pictureSearched +
         "&sort=relevance&format=json&nojsoncallback=1"
     )
       .then(function(response) {

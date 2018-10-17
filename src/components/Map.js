@@ -8,6 +8,37 @@ class MapContent extends Component {
     newmarkers: []
   };
 
+  componentWillMount() {
+    let search = this.props.activeMarker.title;
+    fetch(
+      "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=5fbf4edfc2e62e88f19e1e2021ac937a" +
+        "&content_type=1&per_page=1&text=" +
+        search +
+        "&sort=relevance&format=json&nojsoncallback=1"
+    )
+      .then(function(response) {
+        return response.json();
+      })
+      .then(
+        function(j) {
+          let picArray = j.photos.photo.map(pic => {
+            var srcPath =
+              "https://farm" +
+              pic.farm +
+              ".staticflickr.com/" +
+              pic.server +
+              "/" +
+              pic.id +
+              "_" +
+              pic.secret +
+              ".jpg";
+            return <img alt={pic.title} src={srcPath} />;
+          });
+          this.setState({ pictures: picArray });
+        }.bind(this)
+      );
+  }
+
   render() {
     let marker = {};
     let newmarkers = [];
@@ -19,9 +50,6 @@ class MapContent extends Component {
         onClick={this.props.onMarkerClick}
       />
     ));
-
-    newmarkers.push(markers);
-    console.log(markers);
 
     return (
       <div>
@@ -48,7 +76,7 @@ class MapContent extends Component {
                 {this.props.selectedPlace.name}
               </h3>
               <h4>Pictures:</h4>
-              <p className="App-Picture"> {this.props.pictures}</p>
+              <p className="App-Picture"> {this.state.pictures}</p>
             </div>
           </InfoWindow>
         </Map>

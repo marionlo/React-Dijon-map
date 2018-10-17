@@ -68,7 +68,9 @@ class App extends Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: [],
+
     pictures: [],
+
     filteredLocations: [
       {
         title: "Halles du marché",

@@ -38,7 +38,7 @@ class App extends Component {
         key: "darcy"
       },
       {
-        title: "Porte Guillaume",
+        title: "Porte Guillaume - Dijon",
         location: { lat: 47.3232856, lng: 5.0347209 },
         key: "guillaume"
       },

@@ -16,7 +16,10 @@ class MapContent extends Component {
   componentDidUpdate(prevProps) {
     this.count = true;
     let search = this.props.selectedPlace.name;
-    console.log("count = " + this.count);
+
+  componentWillUpdate() {
+    let search = this.props.selectedPlace.name;
+   
     fetch(
       "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=5fbf4edfc2e62e88f19e1e2021ac937a" +
         "&content_type=1&per_page=1&text=" +

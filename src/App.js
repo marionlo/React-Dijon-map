@@ -53,7 +53,7 @@ class App extends Component {
         key: "Arquebuse"
       },
       {
-        title: "Église Saint-Michel",
+        title: "Église Saint-Michel - Dijon",
         location: { lat: 47.3211217, lng: 5.0449197 },
         key: "michel"
       },
@@ -64,12 +64,7 @@ class App extends Component {
       }
     ],
 
-    marker: [],
-    showingInfoWindow: false,
-    activeMarker: {},
     selectedPlace: [],
-
-    pictures: [],
 
     filteredLocations: [
       {

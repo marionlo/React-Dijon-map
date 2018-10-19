@@ -8,7 +8,6 @@ class MapContent extends Component {
     newmarkers: []
   };
 
-
   constructor(props) {
     super(props);
     this.count = true;
@@ -17,11 +16,10 @@ class MapContent extends Component {
   componentDidUpdate(prevProps) {
     this.count = true;
     let search = this.props.selectedPlace.name;
-    
 
   componentWillUpdate() {
     let search = this.props.selectedPlace.name;
-
+   
     fetch(
       "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=5fbf4edfc2e62e88f19e1e2021ac937a" +
         "&content_type=1&per_page=1&text=" +
@@ -85,7 +83,7 @@ class MapContent extends Component {
             onClose={this.windowHasClosed}
             visible={this.props.showingInfoWindow}
           >
-            <div>
+            <div className="App-Infowindow">
               <h3 className="App-Title-InfoWindow">
                 {this.props.selectedPlace.name}
               </h3>

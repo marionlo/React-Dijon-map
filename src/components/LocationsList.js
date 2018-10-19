@@ -18,13 +18,11 @@ class LocationsList extends Component {
           .indexOf(event.target.value.substr(0, 20).toLowerCase()) !== -1
       );
     });
-    console.log(event.target.value.substr(0, 20));
-    console.log(filteredLocations);
     this.props.onFilterLocations(filteredLocations);
   }
 
   render() {
-    let filteredLocations = this.props.locations.filter(location => {
+    this.props.filteredLocations.filter(location => {
       return (
         location.title
           .toLowerCase()
@@ -48,8 +46,10 @@ class LocationsList extends Component {
           </label>
         </form>
         <ul className="App-List-Locations">
-          {filteredLocations.map(location => (
-            <li key={location.key}>{location.title}</li>
+          {this.props.filteredLocations.map(location => (
+            <li key={location.key} onClick={this.props.onMarkerClick}>
+              {location.title}
+            </li>
           ))}
         </ul>
       </section>

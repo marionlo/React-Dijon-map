@@ -13,7 +13,7 @@ class App extends Component {
   state = {
     locations: [
       {
-        title: "Halles du marché",
+        title: "Halles du marché - Dijon",
         location: { lat: 47.3237863, lng: 5.0399184 },
         key: "halles"
       },
@@ -38,7 +38,7 @@ class App extends Component {
         key: "darcy"
       },
       {
-        title: "Porte Guillaume",
+        title: "Porte Guillaume - Dijon",
         location: { lat: 47.3232856, lng: 5.0347209 },
         key: "guillaume"
       },
@@ -53,25 +53,22 @@ class App extends Component {
         key: "Arquebuse"
       },
       {
-        title: "Église Saint-Michel",
+        title: "Église Saint-Michel - Dijon",
         location: { lat: 47.3211217, lng: 5.0449197 },
         key: "michel"
       },
       {
-        title: "Musée de la vie bourguignonne Perrin de Puycousin",
+        title: "Musée de la vie bourguignonne",
         location: { lat: 47.3174169, lng: 5.0376904 },
         key: "musee"
       }
     ],
 
-    marker: [],
-    showingInfoWindow: false,
-    activeMarker: {},
     selectedPlace: [],
-    pictures: [],
+
     filteredLocations: [
       {
-        title: "Halles du marché",
+        title: "Halles du marché - Dijon",
         location: { lat: 47.3237863, lng: 5.0399184 },
         key: "halles"
       },
@@ -96,7 +93,7 @@ class App extends Component {
         key: "darcy"
       },
       {
-        title: "Porte Guillaume",
+        title: "Porte Guillaume - Dijon",
         location: { lat: 47.3232856, lng: 5.0347209 },
         key: "guillaume"
       },
@@ -111,12 +108,12 @@ class App extends Component {
         key: "Arquebuse"
       },
       {
-        title: "Église Saint-Michel",
+        title: "Église Saint-Michel - Dijon",
         location: { lat: 47.3211217, lng: 5.0449197 },
         key: "michel"
       },
       {
-        title: "Musée de la vie bourguignonne Perrin de Puycousin",
+        title: "Musée de la vie bourguignonne",
         location: { lat: 47.3174169, lng: 5.0376904 },
         key: "musee"
       }
